@@ -9,7 +9,14 @@
 	"compatibility_date": "2025-09-27",
 	"observability": {
 		"enabled": true
-	}
+	},
+	"d1_databases": [
+		{
+			"binding": "order_api",
+			"database_name": "order-api",
+			"database_id": "6f401f82-2dbe-4749-bb73-687bc61db10b"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

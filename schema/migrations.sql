@@ -19,7 +19,8 @@ CREATE TABLE order_items (
   order_id TEXT NOT NULL,
   product_id TEXT NOT NULL,
   quantity INTEGER NOT NULL,
-  FOREIGN KEY (order_id) REFERENCES orders(id)
+  FOREIGN KEY (order_id) REFERENCES orders(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
 CREATE TABLE products (
