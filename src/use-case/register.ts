@@ -2,7 +2,6 @@ import { hash } from 'bcryptjs';
 import { D1UsersRepository } from '../repository/users-repository';
 
 interface RegisterUseCaseRequest {
-	name: string;
 	email: string;
 	password: string;
 }
