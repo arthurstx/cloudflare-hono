@@ -1,22 +1,22 @@
-import { D1OrdersRepository } from '../repository/oders-repository';
+import { D1OrdersRepository } from '../repository/orders-repository';
 import { D1UsersRepository } from '../repository/users-repository';
 import { Order } from '../types/types';
 
-interface FetchUserOrdersUseCaseRequest {
+interface updateOrdersUseCaseRequest {
 	userId: string;
 }
 
-interface FetchUserOrdersUseCaseResponse {
+interface updateOrdersUseCaseResponse {
 	orders: Order[];
 }
 
-export class FetchUserOrdersUseCase {
+export class updateOrdersUseCase {
 	constructor(
 		private ordersRepository: D1OrdersRepository,
 		private usersRepository: D1UsersRepository,
 	) {}
 
-	async execute({ userId }: FetchUserOrdersUseCaseRequest): Promise<FetchUserOrdersUseCaseResponse> {
+	async execute({ userId }: updateOrdersUseCaseRequest): Promise<updateOrdersUseCaseResponse> {
 		const user = await this.usersRepository.findById(userId);
 		if (!user) {
 			throw new Error('User not found');

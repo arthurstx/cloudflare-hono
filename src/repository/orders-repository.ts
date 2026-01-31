@@ -19,4 +19,10 @@ export class D1OrdersRepository {
 		const results = await this.db.prepare(query).bind(userId).all<Order>();
 		return results.results;
 	}
+
+	async updateStatus(id: string, userId: string): Promise<string | unknown> {
+		const query = `UPDATE orders SET status = ? WHERE id = ? AND user_id = ?`;
+		const order = await this.db.prepare(query).bind(Status.PAID, id, userId).run();
+		return order.success;
+	}
 }

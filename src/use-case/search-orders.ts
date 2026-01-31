@@ -1,4 +1,4 @@
-import { D1OrdersRepository } from '../repository/oders-repository';
+import { D1OrdersRepository } from '../repository/orders-repository';
 import { D1UsersRepository } from '../repository/users-repository';
 import { Order } from '../types/types';
 
