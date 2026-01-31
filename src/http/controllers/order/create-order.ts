@@ -7,15 +7,6 @@ import { D1ProductsRepository } from '../../../repository/product-repository';
 import { D1UsersRepository } from '../../../repository/users-repository';
 
 export async function createOrder(c: Context<{ Bindings: Env }>) {
-	/*
-	userId: string;
-	products: Array<{
-		productId: string;
-		quantity: number;
-	}>;
-	orderDate?: Date;
-    */
-
 	const createOrderBodySchema = z.object({
 		userId: z.uuid(),
 		products: z.array(

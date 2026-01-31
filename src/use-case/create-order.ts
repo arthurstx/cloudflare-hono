@@ -19,8 +19,9 @@ interface CreateOrderUseCaseResponse {
 		productId: string;
 		quantity: number;
 	}>;
-	orderDate?: Date;
+	orderDate: Date;
 	status: Status;
+	total: number;
 }
 
 export class CreateOrderUseCase {
@@ -84,8 +85,9 @@ export class CreateOrderUseCase {
 		return {
 			orderId: orderStatementId,
 			products,
-			orderDate,
+			orderDate: orderDate || new Date(),
 			status: Status.PENDING,
+			total: totalAmount,
 		};
 	}
 }
