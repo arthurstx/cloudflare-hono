@@ -89,6 +89,3 @@ export class CreateOrderUseCase {
 		};
 	}
 }
-function ramdomUUID() {
-	throw new Error('Function not implemented.');
-}
