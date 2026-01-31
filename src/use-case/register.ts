@@ -9,7 +9,7 @@ interface RegisterUseCaseRequest {
 export class RegisterUseCase {
 	constructor(private usersRepository: D1UsersRepository) {}
 
-	async execute({ name, email, password }: RegisterUseCaseRequest) {
+	async execute({ email, password }: RegisterUseCaseRequest) {
 		const password_hash = await hash(password, 6);
 		const userWithSameEmail = await this.usersRepository.findByEmail(email);
 

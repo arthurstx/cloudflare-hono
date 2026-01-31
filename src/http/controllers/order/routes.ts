@@ -1,3 +1,6 @@
-import { app } from '../../../app';
+import { Hono } from 'hono';
+import { createOrder } from './create-order';
 
-app.post('/orders');
+export const orderRoutes = new Hono();
+
+orderRoutes.post('/create-orders', createOrder);

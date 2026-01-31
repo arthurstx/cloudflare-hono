@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
 import { ZodError } from 'zod';
 import { authRoutes } from './http/controllers/auth/routes';
-
-export const app = new Hono<{ Bindings: Env }>();
+import { orderRoutes } from './http/controllers/order/routes';
+const app = new Hono<{ Bindings: Env }>();
 
 app.onError((err, c) => {
 	if (err instanceof ZodError) {
@@ -17,3 +17,6 @@ app.onError((err, c) => {
 /*-------routes-------*/
 app.get('/health', (c) => c.json({ status: 'ok' }));
 app.route('/auth', authRoutes);
+app.route('/orders', orderRoutes);
+
+export default app;

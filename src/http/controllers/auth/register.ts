@@ -16,6 +16,7 @@ export async function register(c: Context<{ Bindings: Env }>) {
 		const useCase = new RegisterUseCase(usersRepository);
 
 		await useCase.execute({ email, password });
+		return c.json({ message: 'User registered successfully' }, 201);
 	} catch (err) {
 		throw err;
 	}

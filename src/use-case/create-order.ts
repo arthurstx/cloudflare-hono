@@ -10,7 +10,7 @@ interface CreateOrderUseCaseRequest {
 		productId: string;
 		quantity: number;
 	}>;
-	orderDate?: string;
+	orderDate?: Date;
 }
 
 interface CreateOrderUseCaseResponse {
@@ -19,7 +19,7 @@ interface CreateOrderUseCaseResponse {
 		productId: string;
 		quantity: number;
 	}>;
-	orderDate?: string;
+	orderDate?: Date;
 	status: Status;
 }
 
