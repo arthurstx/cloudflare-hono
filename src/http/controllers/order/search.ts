@@ -1,8 +1,8 @@
 import { Context } from 'hono';
 import z, { uuid } from 'zod';
-import { D1OrdersRepository } from '../../../repository/oders-repository';
 import { D1UsersRepository } from '../../../repository/users-repository';
 import { SearchOrdersUseCase } from '../../../use-case/search-orders';
+import { D1OrdersRepository } from '../../../repository/orders-repository';
 
 export async function search(c: Context<{ Bindings: Env }>) {
 	const searcParamSchema = z.object({ orderId: uuid() });

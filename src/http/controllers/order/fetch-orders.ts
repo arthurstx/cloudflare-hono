@@ -1,8 +1,8 @@
 import { Context } from 'hono';
 import z from 'zod';
-import { D1OrdersRepository } from '../../../repository/oders-repository';
 import { D1UsersRepository } from '../../../repository/users-repository';
 import { FetchUserOrdersUseCase } from '../../../use-case/fetch-user-orders';
+import { D1OrdersRepository } from '../../../repository/orders-repository';
 
 export async function fetchOrders(c: Context<{ Bindings: Env }>) {
 	const searchBodySchema = z.object({
