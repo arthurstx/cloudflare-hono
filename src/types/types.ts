@@ -4,13 +4,27 @@ export enum Status {
 	CANCELED = 'canceled',
 }
 
+export enum Role {
+	ADMIN = 'admin',
+	USER = 'user',
+}
+
 type ISOString = string; // Representa o formato datetime('now') do SQLite
 type UUID = string; // Representa o formato TEXT para UUIDs no SQLite
 
 export interface User {
 	id: UUID;
 	email: string;
-	passwordHash?: string;
+	password_hash?: string;
+	role: Role;
+	createdAt: ISOString;
+}
+
+export interface RefreshToken {
+	id: UUID;
+	userId: UUID;
+	tokenHash: string;
+	expiresAt: ISOString;
 	createdAt: ISOString;
 }
 

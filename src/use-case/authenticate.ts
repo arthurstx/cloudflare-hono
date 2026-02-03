@@ -1,6 +1,8 @@
-import { compare } from 'bcryptjs';
-import { User } from '../types/types';
+import { compare, hash } from 'bcryptjs';
 import { D1UsersRepository } from '../repository/users-repository';
+import dayjs from 'dayjs';
+import { D1RefreshTokensRepository } from '../repository/refresh-token-repository';
+import { User } from '../types/types';
 
 interface AuthenticateUseCaseRequest {
 	email: string;
@@ -12,7 +14,10 @@ interface AuthenticateUseCaseResponse {
 }
 
 export class AuthenticateUseCase {
-	constructor(private usersRepository: D1UsersRepository) {}
+	constructor(
+		private usersRepository: D1UsersRepository,
+		//private refreshRepository: D1RefreshTokensRepository,
+	) {}
 
 	async execute({ email, password }: AuthenticateUseCaseRequest): Promise<AuthenticateUseCaseResponse> {
 		const user = await this.usersRepository.findByEmail(email);
@@ -21,11 +26,12 @@ export class AuthenticateUseCase {
 			throw new Error('invalid credentials');
 		}
 
-		const doesPasswordMatches = await compare(password, user.passwordHash!);
+		const doesPasswordMatches = await compare(password, user.password_hash!);
 
 		if (!doesPasswordMatches) {
 			throw new Error('invalid credentials');
 		}
+
 		return { user };
 	}
 }
